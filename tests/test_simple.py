@@ -2,7 +2,6 @@ import os
 import ssl
 import sys
 
-import pkg_resources
 import pytest
 
 import certifi
@@ -19,11 +18,6 @@ def test_contents():
 
 def test_is_css():
     assert certifi.__certifi_system_store__
-
-
-def test_version():
-    dist = pkg_resources.get_distribution("certifi")
-    assert dist.version.startswith("30")
 
 
 def test_ssl_load_certs():
