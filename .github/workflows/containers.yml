@@ -27,7 +27,8 @@ jobs:
           "fedora:35", "fedora:36", "fedora:37", "fedora:38",
           "fedora:39", "fedora:40", "fedora:41",
           "opensuse/leap",
-          "ubuntu:20.04", "ubuntu:22.04", "ubuntu:24.04", "ubuntu:24.10"
+          "ubuntu:20.04", "ubuntu:22.04", "ubuntu:24.04", "ubuntu:24.10",
+          "gentoo/stage3"
         ]
     steps:
       - name: checkout

@@ -23,6 +23,9 @@ elif [ -e /usr/bin/zypper ]; then
     zypper update -y
     zypper install -y python3
     zypper clean
+elif [ -e /etc/gentoo-release ]; then
+    # Gentoo has Python out of the box
+    :
 else
     echo "Distro not supported"
     exit 1

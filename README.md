@@ -74,6 +74,7 @@ Most major Linux distributions and FreeBSD are supported.
 * Fedora-based distributions (RHEL, CentOS, CentOS Streams)
 * FreeBSD
   * **NOTE:** may require manual installation of ``ca_root_nss``
+* Gentoo
 * OpenSUSE
 
 ### Untested platforms
@@ -81,7 +82,6 @@ Most major Linux distributions and FreeBSD are supported.
 ``certifi-system-store`` may work, but there is no CI for these platforms.
 
 * ArchLinux
-* Gentoo
 * OpenWRT
 * Slackware
 * VoidLinux
