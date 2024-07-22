@@ -22,9 +22,8 @@ def test_is_css():
 
 
 def test_version():
-    for distname in ("certifi", "certifi_system_store"):
-        dist = pkg_resources.get_distribution(distname)
-        assert dist.version.startswith("30")
+    dist = pkg_resources.get_distribution("certifi")
+    assert dist.version.startswith("30")
 
 
 def test_ssl_load_certs():

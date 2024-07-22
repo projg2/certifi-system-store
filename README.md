@@ -9,18 +9,8 @@ experimental**. It hasn't been tested in any production environment.
 
 ## Installation
 
-You absolutely **must** run ``python -m certifi`` after installing the
-package. The command ensures that you have a working system trust store
-and patches your current Python environment. It creates or replaces
-certifi's dist-info directory with certifi-system-store's dist-info.
-
-I recommend that you install ``certifi-system-store`` and patch first,
-then install your packages and requirements.
-
 ```shell
-$ python -m pip install certifi-system-store
-$ python -m certifi
-$ python -m pip install requests
+$ python -m pip install git+https://github.com/projg2/certifi-system-store
 ```
 
 ### Verification
@@ -66,22 +56,6 @@ import certifi
 
 if not getattr(certifi, "__certifi_system_store__", False):
     raise ImportError("certifi-system-store is not installed")
-```
-
-To depend on ``certifi-system-store``:
-
-```python
-# setup.py
-from setuptools import setup
-
-setup(
-    ...,
-    install_requires=[
-        "certifi-system-store ; sys_platform == 'linux' or 'freebsd' in sys_platform",
-        "certifi > 3000 ; sys_platform == 'linux' or 'freebsd' in sys_platform",
-        "certifi",
-    ],
-)
 ```
 
 ## Platform support
@@ -197,23 +171,18 @@ $ sudo update-ca-certificates
 ## How does it work?
 
 * empty ``certifi/cacert.pem`` to override any existing certifi data.
-* fake ``certifi dist-info`` with much higher version number than certifi's
+* ``certifi dist-info`` with much higher version number than certifi's
   default dist-info metadata
 
 ```shell
 $ venv/bin/pip install certifi-system-store
 $ ls -l .tox/venv/lib/python3.9/site-packages/
 certifi
-certifi_system_store-3000.1.dist-info
+certifi-3000.1.dist-info
 ...
 $ venv/bin/python -m certifi -v --system-store
 certifi-system store 3000.0a1
-Patched certifi.dist-info -> certifi_system_store.dist-info
 /etc/pki/tls/cert.pem
-$ ls -l .tox/venv/lib/python3.9/site-packages/
-certifi
-certifi-3000.1.dist-info -> certifi_system_store-3000.1.dist-info
-certifi_system_store-3000.1.dist-info
 ...
 ```
 

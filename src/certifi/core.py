@@ -1,7 +1,5 @@
 import os
 
-from certifi._patch import _verify_dist_info
-
 _CANDIDATES = [
     # Alpine, Arch, Fedora 34+, OpenWRT, RHEL 9+, FreeBSD, ...
     # It's a symlink on some platforms (Fedora, FreeBSD)
@@ -25,7 +23,6 @@ def where():
     global _SSL_PEM
     if _SSL_PEM is not None:
         return _SSL_PEM
-    _verify_dist_info()
     for candidate in _CANDIDATES:
         if os.path.isfile(candidate):
             _SSL_PEM = candidate
