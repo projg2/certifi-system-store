@@ -22,7 +22,7 @@ jobs:
       matrix:
         distro: [
           "alpine",
-          "centos:7", "quay.io/centos/centos:stream8", "quay.io/centos/centos:stream9",
+          "quay.io/centos/centos:stream9",
           "debian:buster", "debian:bullseye",
           "fedora:35", "fedora:36",
           "opensuse/leap",
